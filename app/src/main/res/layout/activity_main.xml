@@ -14,6 +14,12 @@
         android:background="#7AFFFFFF" >
 
 
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
     <LinearLayout
@@ -30,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
+            android:fontFamily="@font/amarante"
             android:text="Stray Cow Reporting Application"
             android:textAlignment="center"
             android:textColor="@color/blue"
@@ -48,6 +55,7 @@
         -->
 
         <Button
+            android:id="@+id/uploadImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-20dp"
@@ -70,7 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="Area code/Pincode (required)"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="#070101"
+            android:textColorHint="#8F8686" />
 
         <EditText
             android:id="@+id/address_edit_text"
@@ -78,7 +88,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="Address (optional)"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="#070101"
+            android:textColorHint="#8F8686" />
 
         <EditText
             android:id="@+id/uploader_name_edit_text"
@@ -86,32 +98,35 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="Uploader's Name (optional)"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="#070101"
+            android:textColorHint="#8F8686" />
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-        <Button
-            android:id="@+id/report_button"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="110dp"
-            android:text="Report"
-            android:textSize="20dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
-            android:text="Show Status"
-            android:layout_weight="1"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/report_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="5dp"
+                android:text="Report"
+                android:textSize="20dp" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="50"
+                android:text="Show Status"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
@@ -122,6 +137,7 @@
             android:textSize="20dp" />
 
         <Button
+            android:id="@+id/signGaushala"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
