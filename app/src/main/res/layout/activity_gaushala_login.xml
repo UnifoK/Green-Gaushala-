@@ -8,21 +8,21 @@
     android:background="@drawable/pagebkg"
     android:orientation="horizontal"
     tools:context=".gaushalaLogin">
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp" >
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="30dp" >-->
 
 
-            <!-- email EditText -->
+<!--            &lt;!&ndash; email EditText &ndash;&gt;-->
 
-            <!-- Password EditText -->
+<!--            &lt;!&ndash; Password EditText &ndash;&gt;-->
 
-            <!-- Login Button -->
+<!--            &lt;!&ndash; Login Button &ndash;&gt;-->
 
 
 
- </androidx.cardview.widget.CardView>
+<!-- </androidx.cardview.widget.CardView>-->
 
     <Button
         android:id="@+id/btnlogin"

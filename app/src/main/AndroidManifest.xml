@@ -21,6 +21,11 @@
         android:theme="@style/Theme.Refining_gaushala_app"
         tools:targetApi="31">
         <activity
+            android:name=".gaushalaNav"
+            android:exported="false"
+            android:label="@string/title_activity_gaushala_nav"
+            android:theme="@style/Theme.Refining_gaushala_app.NoActionBar" />
+        <activity
             android:name=".viewImage"
             android:exported="false" />
         <activity
@@ -29,7 +34,6 @@
         <activity
             android:name=".gaushalaLogin"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

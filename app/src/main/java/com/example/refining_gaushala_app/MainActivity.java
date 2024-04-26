@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
    ImageView imageView ;
     Button uploadImage ;
     Button signGaushala;
+    Button signBio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,17 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
+    signBio= findViewById(R.id.signBio);
     signGaushala =findViewById(R.id.signGaushala);
+
+
+    signBio.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, gaushalaNav.class);
+            startActivity(intent);
+        }
+    });
     signGaushala.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
