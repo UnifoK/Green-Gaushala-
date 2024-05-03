@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,8 +18,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
-public class MainActivity extends AppCompatActivity {
+import java.sql.Connection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+public class MainActivity extends AppCompatActivity {
+    ConnectionClass connectionClass;
+    Connection con;
+    String str;
    ImageView imageView ;
     Button uploadImage ;
     Button signGaushala;
@@ -28,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
+        connectionClass=new ConnectionClass();
+        connectDatabase();
         imageView=findViewById(R.id.imageView1);
         uploadImage =findViewById(R.id.uploadImage);
 
@@ -70,6 +78,33 @@ public class MainActivity extends AppCompatActivity {
         Uri uri =data.getData();
         imageView.setImageURI(uri);
     }
+    private void connectDatabase() {
+        ExecutorService executorService= Executors.newSingleThreadExecutor();
+        executorService.execute(()->{
+            try{
+                con=connectionClass.CONN();
+                if(con==null){
+                    str="Error in connection with Mysql server";
+                }
+                else{
+                    str="Connected with Mysql server";
+                }
+                //Toast.makeText(null, str, Toast.LENGTH_SHORT).show(); //problem arises from adding this lil shit
+                Log.e("from code->", str);
+                //maybe problem is arising by Connection Class calling
+            }catch (Exception e){
+                throw new RuntimeException(e);
+            }
 
+//                    runOnUiThread(()->{
+//                        try {
+//                            Thread.sleep(1000);
+//                        }catch(InterruptedException e){
+//                            e.printStackTrace();
+//                        }
+//
+//                    });
+        });
+    }
 
 }
