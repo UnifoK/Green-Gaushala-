@@ -10,22 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.refining_gaushala_app.databinding.FragmentOrderBinding;
 import com.example.refining_gaushala_app.databinding.FragmentSlideshowBinding;
 
 public class OrderFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentOrderBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         OrderViewModel orderViewModel =
                 new ViewModelProvider(this).get(OrderViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentOrderBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        orderViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

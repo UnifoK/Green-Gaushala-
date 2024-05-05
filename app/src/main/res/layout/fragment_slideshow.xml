@@ -1,22 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- activity_update_resources.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white"
     tools:context=".ui.slideshow.SlideshowFragment">
 
+    <!-- Daily Production Section -->
     <TextView
-        android:id="@+id/text_slideshow"
+        android:id="@+id/text_daily_production"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily Production"
+        android:fontFamily="@font/amarante"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Daily Production Input -->
+    <EditText
+        android:id="@+id/edit_daily_production"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:fontFamily="@font/amarante"
+        android:hint="Enter Daily Production"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:backgroundTint="@color/blue"
+        android:layout_below="@id/text_daily_production"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Total Production Section -->
+    <TextView
+        android:id="@+id/text_total_production"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amarante"
+        android:text="Total Production"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/edit_daily_production"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Total Production Input -->
+    <EditText
+        android:id="@+id/edit_total_production"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amarante"
+        android:hint="Enter Total Production"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:backgroundTint="@color/blue"
+        android:layout_below="@id/text_total_production"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amarante"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:background="@color/grey"
+        android:layout_below="@id/edit_total_production"
+        android:layout_alignParentEnd="true"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"/>
+
+</RelativeLayout>
