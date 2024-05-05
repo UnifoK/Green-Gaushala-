@@ -82,6 +82,16 @@
             android:inputType="text"
             android:textColor="#070101"
             android:textColorHint="#8F8686" />
+        <EditText
+            android:id="@+id/timeSlot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Time Slot (24 Hrs Format)"
+            android:inputType="text"
+            android:textColor="#070101"
+            android:textColorHint="#8F8686" />
+
 
         <EditText
             android:id="@+id/address_edit_text"
