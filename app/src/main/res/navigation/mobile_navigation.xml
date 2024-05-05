@@ -18,6 +18,11 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_order"
+        android:name="com.example.refining_gaushala_app.ui.order.OrderFragment"
+        android:label="@string/menu_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.refining_gaushala_app.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"

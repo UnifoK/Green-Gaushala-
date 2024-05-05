@@ -8,11 +8,11 @@ import java.sql.Statement;
 import java.util.Objects;
 
 public class ConnectionClass {
-    protected static String db = "green_gaushala";
+    protected static String db = "temp";
     protected static String ip = "10.0.2.2";
     protected static String port = "3306";
     protected static String username = "root";
-    protected static String password = "mysql5.7";
+    protected static String password = "root";
 
     public Connection CONN() {
         Connection conn = null;

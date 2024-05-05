@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     signBio.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, gaushalaNav.class);
+            Intent intent = new Intent(MainActivity.this, bioplantLogin.class);
             startActivity(intent);
         }
     });
