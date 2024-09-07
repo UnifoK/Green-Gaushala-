@@ -10,26 +10,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.os.Bundle;
+import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.refining_gaushala_app.models.Report;
+import com.example.refining_gaushala_app.network.ReportApi;
+import com.example.refining_gaushala_app.network.RetrofitClient;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.*;
+import retrofit2.Response;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.github.dhaval2404.imagepicker.ImagePicker;
-
 import java.sql.Connection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
-    ConnectionClass connectionClass;
-    Connection con;
+//    ConnectionClass connectionClass;
+//    Connection con;
     String str;
     ImageView imageView;
-
     EditText area, timeSlot, location, reportedBy;
     Button uploadImage, report_button;
     Button signGaushala;
@@ -40,8 +47,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        connectionClass = new ConnectionClass();
-        connectDatabase();
+
+        ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
+        Call<List<Report>> call = reportApi.getAllReports();
+
+
+//        connectionClass = new ConnectionClass();
+//        connectDatabase();
         imageView = findViewById(R.id.imageView1);
         uploadImage = findViewById(R.id.uploadImage);
 
@@ -84,6 +96,29 @@ public class MainActivity extends AppCompatActivity {
         report_button = findViewById(R.id.report_button);
 
 
+//        report_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Area = area.getText().toString();
+//                String Location = location.getText().toString();
+//                String Reported = reportedBy.getText().toString();
+//                String TimeSlot = timeSlot.getText().toString();
+//
+//                ConnectionClass.addTemp(Area, Location);
+//
+//
+//                if (Area.equals("") && Location.equals("") && Reported.equals("") && TimeSlot.equals(""))
+//                    Toast.makeText(com.example.refining_gaushala_app.MainActivity.this, "Incomplete Information", Toast.LENGTH_SHORT).show();
+//                else
+//                    Toast.makeText(com.example.refining_gaushala_app.MainActivity.this, "Reported", Toast.LENGTH_SHORT).show();
+//                area.setText("");
+//                location.setText("");
+//                reportedBy.setText("");
+//                timeSlot.setText("");
+//            }
+//        });
+
+
         report_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,16 +126,56 @@ public class MainActivity extends AppCompatActivity {
                 String Location = location.getText().toString();
                 String Reported = reportedBy.getText().toString();
                 String TimeSlot = timeSlot.getText().toString();
-                if (Area.equals("") && Location.equals("") && Reported.equals("") && TimeSlot.equals(""))
-                    Toast.makeText(com.example.refining_gaushala_app.MainActivity.this, "Incomplete Information", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(com.example.refining_gaushala_app.MainActivity.this, "Reported", Toast.LENGTH_SHORT).show();
-                area.setText("");
-                location.setText("");
-                reportedBy.setText("");
-                timeSlot.setText("");
+
+                if (Area.equals("") || Location.equals("") || Reported.equals("") || TimeSlot.equals("")) {
+                    Toast.makeText(MainActivity.this, "Incomplete Information", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Create a new Report object with the user input
+                    Report report = new Report();
+                    report.setArea(Area);
+                    report.setLocation(Location);
+                    report.setReportedBy(Reported);
+                    report.setTimeSlot(TimeSlot);
+
+                    // Make the API call to create a new report
+                    ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
+                    Call<Report> call = reportApi.createReport(report);
+                    call.enqueue(new Callback<Report>() {
+                        @Override
+                        public void onResponse(Call<Report> call, Response<Report> response) {
+                            if (response.isSuccessful()) {
+                                // Handle successful response
+                                Toast.makeText(MainActivity.this, "Report created successfully!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Handle unsuccessful response
+                                Toast.makeText(MainActivity.this, "Failed to create report: " + response.message(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Report> call, Throwable t) {
+                            // Handle network failure
+                            Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    // Clear the input fields after submission
+                    area.setText("");
+                    location.setText("");
+                    reportedBy.setText("");
+                    timeSlot.setText("");
+                }
             }
         });
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -112,32 +187,32 @@ public class MainActivity extends AppCompatActivity {
         //   imageView.setImageURI(uri);
     }
 
-    private void connectDatabase() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = connectionClass.CONN();
-                if (con == null) {
-                    str = "Error in connection with Mysql server";
-                } else {
-                    str = "Connected with Mysql server";
-                }
-                //Toast.makeText(null, str, Toast.LENGTH_SHORT).show(); //problem arises from adding this lil shit
-                Log.e("from code->", str);
-                //maybe problem is arising by Connection Class calling
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-//                    runOnUiThread(()->{
-//                        try {
-//                            Thread.sleep(1000);
-//                        }catch(InterruptedException e){
-//                            e.printStackTrace();
-//                        }
+//    private void connectDatabase() {
+//        ExecutorService executorService = Executors.newSingleThreadExecutor();
+//        executorService.execute(() -> {
+//            try {
+//                con = connectionClass.CONN();
+//                if (con == null) {
+//                    str = "Error in connection with Mysql server";
+//                } else {
+//                    str = "Connected with Mysql server";
+//                }
+//                //Toast.makeText(null, str, Toast.LENGTH_SHORT).show(); //problem arises from adding this lil shit
+//                Log.e("from code->", str);
+//                //maybe problem is arising by Connection Class calling
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
 //
-//                    });
-        });
-    }
+////                    runOnUiThread(()->{
+////                        try {
+////                            Thread.sleep(1000);
+////                        }catch(InterruptedException e){
+////                            e.printStackTrace();
+////                        }
+////
+////                    });
+//        });
+//    }
 
 }
