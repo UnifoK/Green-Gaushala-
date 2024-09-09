@@ -11,12 +11,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/amarante"
         android:text="Pending Orders"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"/>
+        android:textStyle="bold" />
 
     <!-- List of pending orders -->
     <ScrollView
@@ -29,7 +29,7 @@
             android:id="@+id/orders_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
     </ScrollView>
 
@@ -42,20 +42,20 @@
         <!-- Accept button -->
         <Button
             android:id="@+id/btn_accept"
-            android:fontFamily="@font/amarante"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Accept"/>
+            android:fontFamily="@font/amarante"
+            android:text="Accept" />
 
         <!-- Reject button -->
         <Button
             android:id="@+id/btn_reject"
-            android:fontFamily="@font/amarante"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Reject"/>
+            android:fontFamily="@font/amarante"
+            android:text="Reject" />
 
     </LinearLayout>
 </LinearLayout>

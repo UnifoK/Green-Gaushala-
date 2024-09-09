@@ -28,8 +28,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Manufacturer Login"
         android:fontFamily="@font/amarante"
+        android:text=" Manufacturer Login"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="36sp"
@@ -63,13 +63,13 @@
         android:textColorHint="@color/black" />
     <!--  Login Button  -->
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/biobtnlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/hello"
-        android:text="LOGIN"
         android:fontFamily="@font/amarante"
+        android:text="LOGIN"
         android:textSize="20dp" />
 
     <TextView
@@ -77,8 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:padding="8dp"
         android:fontFamily="@font/amarante"
+        android:padding="8dp"
         android:text="Not Yet Registered Sign Up!"
         android:textColor="@color/blue"
         android:textSize="18sp" />

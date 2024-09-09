@@ -1,63 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_img">
-<!-- //   tools:context=".splash">-->
+    <!-- //   tools:context=".splash">-->
 
 
     <View
-        android:layout_marginStart="-20dp"
-        android:layout_marginTop="-30dp"
+        android:id="@+id/topleftoval"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/topleftoval"
-        />
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-30dp" />
 
     <TextView
+        android:id="@+id/sparkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GREEN GAUSHALA"
-        android:textSize="45sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:layout_above="@id/sparkImg"
-        android:id="@+id/sparkText"
-        android:fontFamily="cursive"/>
+        android:layout_centerHorizontal="true"
+        android:fontFamily="cursive"
+        android:text="GREEN GAUSHALA"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/sparkImg"
         android:layout_width="600px"
         android:layout_height="700px"
-        android:layout_centerVertical="true"
-        android:paddingStart="30dp"
-        android:background="@drawable/splashlogo"
-        android:id="@+id/sparkImg"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_centerVertical="true"
+        android:background="@drawable/splashlogo"
+        android:paddingStart="30dp" />
 
     <TextView
+        android:id="@+id/slang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/slang"
         android:layout_below="@id/sparkImg"
+        android:layout_centerHorizontal="true"
         android:text=""
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@color/black" />
 
 
     <Button
+        android:id="@+id/btnGetStarted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="get started"
+        android:layout_below="@id/slang"
         android:layout_centerHorizontal="true"
-        android:id="@+id/btnGetStarted"
         android:layout_marginTop="40px"
-        android:layout_below="@id/slang"/>
-
+        android:text="get started" />
 
 
 </RelativeLayout>

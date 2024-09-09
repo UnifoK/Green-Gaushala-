@@ -5,15 +5,15 @@ import com.example.refining_gaushala_app.models.Report;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 public interface ReportApi {
 
+    @Multipart
+    @POST("upload")
+    Call<String> uploadImage(@Part MultipartBody.Part image);
     @GET("api/reports")
     Call<List<Report>> getAllReports();
 

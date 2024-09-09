@@ -1,171 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/pagebkg"
-        tools:context=".gaushalaReg">
+    tools:context=".gaushalaReg">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/amarante"
+            android:text="New Gaushala Registration"
+            android:textColor="#F0391661"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <TextView
+
+            <EditText
+                android:id="@+id/gaushala_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:autoText="false"
+                android:capitalize="words"
+                android:hint="Gaushala Name"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/certificate_number_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="gaushala_certificate_number"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/location_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Location"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/dung_production_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Range of Produced Cow Dung (Rs 10/kg)"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/phone_number_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Phone No."
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/user_id_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="User Id"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="New Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="#ACA5A5"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/sign_up_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/amarante"
-                android:text="New Gaushala Registration"
-                android:textColor="#F0391661"
-                android:textSize="26sp"
+                android:layout_gravity="center"
+                android:text="Sign Up"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/ifLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:text="Already a member? Login"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
                 android:textStyle="bold" />
-        </LinearLayout>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="20dp"
-            app:cardBackgroundColor="@color/white"
-            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="30dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
 
 
-                <EditText
-                    android:id="@+id/gaushala_name_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:autoText="false"
-                    android:capitalize="words"
-                    android:hint="Gaushala Name"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/certificate_number_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="gaushala_certificate_number"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/location_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Location"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/dung_production_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Range of Produced Cow Dung (Rs 10/kg)"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/email_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/phone_number_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Phone No."
-                    android:inputType="phone"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/user_id_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="User Id"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/password_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:hint="New Password"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:textColorHint="#ACA5A5"
-                    android:textSize="15sp" />
-
-                <Button
-                    android:id="@+id/sign_up_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Sign Up"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Already a member? Login"
-                    android:clickable="true"
-                    android:textColor="@color/blue"
-                    android:layout_gravity="center"
-                    android:id="@+id/ifLogin"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

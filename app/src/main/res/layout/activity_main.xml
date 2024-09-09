@@ -12,13 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#7AFFFFFF" >
+        android:background="#7AFFFFFF">
 
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
             android:layout_weight="1"
             tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
@@ -45,21 +47,21 @@
             android:textStyle="bold" />
 
 
-      <!--  <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="{ An Opportunity to help our Sacred Entity and Contribute to our Environment at One Click }"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-        -->
+        <!--  <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="20dp"
+              android:text="{ An Opportunity to help our Sacred Entity and Contribute to our Environment at One Click }"
+              android:textAlignment="center"
+              android:textColor="@color/black"
+              android:textSize="16sp" />
+          -->
 
         <Button
             android:id="@+id/uploadImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-10dp"
             android:layout_marginBottom="20dp"
             android:drawableTint="#EAE5E5"
             android:drawableTintMode="src_atop"
@@ -82,6 +84,7 @@
             android:inputType="text"
             android:textColor="#070101"
             android:textColorHint="#8F8686" />
+
         <EditText
             android:id="@+id/timeSlot"
             android:layout_width="match_parent"
@@ -157,11 +160,12 @@
             android:text="Sign in as Gaushala"
             android:textSize="20dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
     </LinearLayout>
 

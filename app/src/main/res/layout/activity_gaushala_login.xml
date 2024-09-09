@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pagebkg"
     android:orientation="horizontal"
     tools:context=".gaushalaLogin">
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="30dp" >-->
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="30dp" >-->
 
 
-<!--            &lt;!&ndash; email EditText &ndash;&gt;-->
+    <!--            &lt;!&ndash; email EditText &ndash;&gt;-->
 
-<!--            &lt;!&ndash; Password EditText &ndash;&gt;-->
+    <!--            &lt;!&ndash; Password EditText &ndash;&gt;-->
 
-<!--            &lt;!&ndash; Login Button &ndash;&gt;-->
+    <!--            &lt;!&ndash; Login Button &ndash;&gt;-->
 
 
-
-<!-- </androidx.cardview.widget.CardView>-->
+    <!-- </androidx.cardview.widget.CardView>-->
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/Gbtnlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -40,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <TextView
-        android:id="@+id/bioplant_SignUp"
+        android:id="@+id/gaushala_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -58,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+        app:layout_constraintTop_toBottomOf="@+id/Gbtnlogin" />
 
     <EditText
         android:id="@+id/login_email"
@@ -91,7 +90,7 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHint="#8F8686"
-        app:layout_constraintBottom_toTopOf="@+id/btnlogin"
+        app:layout_constraintBottom_toTopOf="@+id/Gbtnlogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
