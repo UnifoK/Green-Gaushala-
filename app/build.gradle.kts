@@ -51,6 +51,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     androidTestImplementation(libs.espresso.core)
     implementation("mysql:mysql-connector-java:5.1.49");
 

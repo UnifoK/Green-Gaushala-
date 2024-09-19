@@ -25,8 +25,8 @@ public class Gaushala {
         this.password = password;
     }
 
-    public Gaushala(String email, String password) {
-        this.email = email;
+    public Gaushala(String userId, String password) {
+        this.userId = userId;
         this.password = password;
     }
     // Getters and setters

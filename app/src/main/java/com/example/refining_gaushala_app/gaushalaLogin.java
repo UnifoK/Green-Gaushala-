@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class gaushalaLogin extends AppCompatActivity {
 
-    EditText loginEmail, loginPassword;
+    EditText loginUserId, loginPassword;
     Button btnLogin;
     TextView txtSignUp;
 
@@ -41,7 +41,7 @@ public class gaushalaLogin extends AppCompatActivity {
         });
 
         // Initialize UI elements
-        loginEmail = findViewById(R.id.login_email);
+        loginUserId = findViewById(R.id.login_userId);
         loginPassword = findViewById(R.id.login_password);
         btnLogin = findViewById(R.id.Gbtnlogin);
         txtSignUp = findViewById(R.id.gaushala_SignUp); // Update the ID to match your layout
@@ -54,17 +54,17 @@ public class gaushalaLogin extends AppCompatActivity {
 
         // Handle Login button click
         btnLogin.setOnClickListener(v -> {
-            String email = loginEmail.getText().toString();
+            String userId = loginUserId.getText().toString();
             String password = loginPassword.getText().toString();
 
             // Validate input
-            if (email.isEmpty() || password.isEmpty()) {
+            if (userId.isEmpty() || password.isEmpty()) {
                 Toast.makeText(gaushalaLogin.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // Create Gaushala object for login
-            Gaushala gaushala = new Gaushala(email, password);
+            Gaushala gaushala = new Gaushala(userId, password);
 
             // Make API call to authenticate Gaushala
             AuthApi authApi = RetrofitClient.getAuthApi();

@@ -60,14 +60,14 @@
         app:layout_constraintTop_toBottomOf="@+id/Gbtnlogin" />
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/login_userId"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="98dp"
         android:background="@drawable/hello"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="8dp"
-        android:hint="Email"
+        android:hint="UserId"
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHint="#C8C4C4"
