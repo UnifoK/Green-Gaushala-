@@ -18,6 +18,11 @@ public class Bioplant {
         this.password = password;
     }
 
+    public Bioplant(String userId, String password){
+        this.userId = userId;
+        this.password = password;
+    }
+
     // Getters and Setters
     public String getName() {
         return name;

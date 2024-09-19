@@ -36,14 +36,14 @@
         android:textStyle="bold" />
     <!--  email EditText  -->
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/login_userId"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/hello"
         android:drawableLeft="@drawable/lock"
         android:drawablePadding="8dp"
-        android:hint="User Id"
+        android:hint="User ID"
         android:padding="8dp"
         android:textColor="@color/blue"
         android:textColorHint="@color/black" />

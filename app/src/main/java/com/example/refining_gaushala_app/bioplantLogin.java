@@ -41,7 +41,7 @@ public class bioplantLogin extends AppCompatActivity {
         });
 
         // Initialize UI elements
-        userIdEditText = findViewById(R.id.login_email);
+        userIdEditText = findViewById(R.id.login_userId);
         passwordEditText = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.biobtnlogin); // Make sure you have this button in your XML
         bioplantSignUp = findViewById(R.id.bioplant_SignUp);
@@ -64,7 +64,7 @@ public class bioplantLogin extends AppCompatActivity {
             }
 
             // Create Bioplant object for login (modify if your API expects a different payload)
-            Bioplant bioplant = new Bioplant(null, null, null, null, userId, password);
+            Bioplant bioplant = new Bioplant(userId, password);
 
             // Make API call to authenticate Bioplant
             AuthApi authApi = RetrofitClient.getAuthApi();
