@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http:/192.168.0.110:8080/";  // Replace with your server's URL
+    private static final String BASE_URL = "http:/192.168.0.112:8080/";  // Replace with your server's URL
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitInstance() {
