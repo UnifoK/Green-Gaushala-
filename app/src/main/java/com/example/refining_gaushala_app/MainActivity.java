@@ -13,7 +13,13 @@ import com.example.refining_gaushala_app.models.Report;
 import com.example.refining_gaushala_app.network.ReportApi;
 import com.example.refining_gaushala_app.network.RetrofitClient;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+
+import java.io.File;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -87,17 +93,20 @@ public class MainActivity extends AppCompatActivity {
                 if (Area.equals("") || Location.equals("") || Reported.equals("") || TimeSlot.equals("") || imageUri == null) {
                     Toast.makeText(MainActivity.this, "Incomplete Information", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Create a new Report object with the user input
-                    Report report = new Report();
-                    report.setArea(Area);
-                    report.setLocation(Location);
-                    report.setReportedBy(Reported);
-                    report.setTimeSlot(TimeSlot);
-                    report.setImageUrl(imageUri.toString()); // Set the image URL
+                    // Create the report fields as RequestBody
+                    RequestBody areaBody = RequestBody.create(MediaType.parse("text/plain"), Area);
+                    RequestBody locationBody = RequestBody.create(MediaType.parse("text/plain"), Location);
+                    RequestBody reportedByBody = RequestBody.create(MediaType.parse("text/plain"), Reported);
+                    RequestBody timeSlotBody = RequestBody.create(MediaType.parse("text/plain"), TimeSlot);
 
-                    // Make the API call to create a new report
+                    // Prepare the image file for upload
+                    File imageFile = new File(imageUri.getPath()); // Use the correct path to the image file
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageFile);
+                    MultipartBody.Part body = MultipartBody.Part.createFormData("image", imageFile.getName(), requestFile);
+
+                    // Make the API call to create a new report with the multipart data
                     ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
-                    Call<Report> call = reportApi.createReport(report);
+                    Call<Report> call = reportApi.createReport(areaBody, timeSlotBody, locationBody, reportedByBody, body);
                     call.enqueue(new Callback<Report>() {
                         @Override
                         public void onResponse(Call<Report> call, Response<Report> response) {
@@ -127,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     @Override

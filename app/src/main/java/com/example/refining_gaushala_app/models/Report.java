@@ -6,7 +6,7 @@ public class Report {
     private String timeSlot;
     private String location;
     private String reportedBy;
-    private String imageUrl;
+    private String image;
 
     // Getters and Setters
     public Long getId() {
@@ -49,11 +49,11 @@ public class Report {
         this.reportedBy = reportedBy;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
