@@ -1,8 +1,18 @@
 package com.example.refining_gaushala_app.models;
 
 public class Gaushala {
+    private Long id;
     private String name;
     private String registrationNumber;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String location;
     private String dungAmount;
     private String email;
