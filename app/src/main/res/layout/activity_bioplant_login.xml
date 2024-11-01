@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/pagebkg"
+    android:background="@drawable/backimg"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".bioplantLogin">
@@ -25,16 +25,18 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp" />
 
+    <!--  email EditText  -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amarante"
         android:text=" Manufacturer Login"
+        android:layout_marginBottom="50dp"
         android:textAlignment="center"
-        android:textColor="@color/blue"
+        android:textColor="#06125E"
         android:textSize="36sp"
         android:textStyle="bold" />
-    <!--  email EditText  -->
+
     <EditText
         android:id="@+id/login_userId"
         android:layout_width="match_parent"
@@ -46,13 +48,15 @@
         android:hint="User ID"
         android:padding="8dp"
         android:textColor="@color/blue"
-        android:textColorHint="@color/black" />
+        android:textColorHint="#733F3F"
+        android:textStyle="italic" />
     <!--  Password EditText  -->
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/hello"
         android:drawableLeft="@drawable/lock1"
         android:drawablePadding="8dp"
@@ -60,7 +64,8 @@
         android:inputType="textPassword"
         android:padding="8dp"
         android:textColor="@color/blue"
-        android:textColorHint="@color/black" />
+        android:textColorHint="#733F3F"
+        android:textStyle="italic" />
     <!--  Login Button  -->
     <Button
         android:id="@+id/biobtnlogin"
@@ -76,12 +81,14 @@
         android:id="@+id/bioplant_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="100dp"
         android:fontFamily="@font/amarante"
         android:padding="8dp"
         android:text="Not Yet Registered Sign Up!"
-        android:textColor="@color/blue"
-        android:textSize="18sp" />
+        android:textColor="#06125E"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 </LinearLayout>
 
 

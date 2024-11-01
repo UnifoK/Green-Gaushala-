@@ -2,6 +2,8 @@ package com.example.refining_gaushala_app.network;
 
 import com.example.refining_gaushala_app.models.Gaushala;
 import com.example.refining_gaushala_app.models.Report;
+import com.example.refining_gaushala_app.ui.slideshow.GaushalaUpdateRequest;
+
 import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -10,53 +12,64 @@ import retrofit2.http.*;
 
 public interface ReportApi {
 
-    // New method to fetch all gaushalas
-    @GET("gaushalas") // Adjust this endpoint to match your backend API
-    Call<List<Gaushala>> getAllGaushalas(); // Make sure to return a List of Gaushala objects
+    // Fetch all gaushalas
+    @GET("/api/gaushala/gaushalas")
+    Call<List<Gaushala>> getAllGaushalas();
 
-    // Method to create a new report with multipart image upload
+    // Create a new report with multipart image upload
     @Multipart
-    @POST("api/reports")
+    @POST("/api/reports") // Ensure leading slash if base URL is set without one
     Call<Report> createReport(
             @Part("area") RequestBody area,
             @Part("timeSlot") RequestBody timeSlot,
             @Part("location") RequestBody location,
             @Part("reportedBy") RequestBody reportedBy,
-            @Part MultipartBody.Part image // This is the image being uploaded
+            @Part MultipartBody.Part image // Image to be uploaded
     );
 
-    // Method to fetch all reports
-    @GET("api/reports")
+    // Fetch all reports
+    @GET("/api/reports")
     Call<List<Report>> getAllReports();
 
-    // Method to fetch a specific report by its ID
-    @GET("api/reports/{id}")
+    // Fetch a specific report by its ID
+    @GET("/api/reports/{id}")
     Call<Report> getReportById(@Path("id") Long id);
 
-    // Method to delete a specific report by its ID
-    @DELETE("api/reports/{id}")
+    // Delete a specific report by its ID
+    @DELETE("/api/reports/{id}")
     Call<Void> deleteReport(@Path("id") Long id);
 
-    // Method to update the status of a report (partial update using PATCH)
-    @PATCH("api/reports/{id}")
+    // Update the status of a report (partial update)
+    @PATCH("/api/reports/{id}")
     Call<Report> updateReportStatus(
             @Path("id") Long id,
-            @Body Report report // Sending the updated report object to change its status
+            @Body Report report // Updated report object
     );
 
-    // Method to update a report completely by its ID
-    @PUT("api/reports/{id}")
+    // Update a report completely by its ID
+    @PUT("/api/reports/{id}")
     Call<Report> updateReport(
             @Path("id") Long id,
-            @Body Report report // Sending the entire report object for update
+            @Body Report report // Entire report object for update
     );
 
-    // New method to accept a report by a specific user
-    @PUT("api/reports/{id}/accept")
+    // Accept a report by a specific user
+    // Accept a report by a specific user
+    @PUT("/api/reports/{id}/accept")
     Call<Report> acceptReport(
             @Path("id") Long id,
-            @Query("acceptedBy") String acceptedBy // Sending the name of the user accepting the report
+            @Query("gaushalaId") Long gaushalaId // Include gaushalaId as a query parameter
     );
+
+
+    // Update dung details for a specific Gaushala
+    @PUT("/api/gaushala/update-dung/{id}")
+    Call<Gaushala> updateDungDetails(
+            @Path("id") Long gaushalaId, // ID of the Gaushala to update
+            @Body GaushalaUpdateRequest request);
+
+    @GET("/api/gaushala/dung/details/{id}")
+    Call<GaushalaUpdateRequest> getDungDetails(@Path("id") Long gaushalaId);
 
 
 }

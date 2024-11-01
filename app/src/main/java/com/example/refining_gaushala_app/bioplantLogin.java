@@ -75,6 +75,8 @@ public class bioplantLogin extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         Toast.makeText(bioplantLogin.this, "Login successful!", Toast.LENGTH_SHORT).show();
                         // Navigate to another activity or update UI as needed
+                        Intent intent = new Intent(bioplantLogin.this, bioplant.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(bioplantLogin.this, "Login failed: " + response.message(), Toast.LENGTH_SHORT).show();
                     }

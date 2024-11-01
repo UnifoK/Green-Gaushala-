@@ -1,7 +1,10 @@
 package com.example.refining_gaushala_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +29,10 @@ public class gaushalaLogin extends AppCompatActivity {
 
     EditText loginUserId, loginPassword;
     Button btnLogin;
+    Long gaushalaId;
     TextView txtSignUp;
-
+    private static final String PREF_NAME = "MyPrefs";
+    private static final String GAUSHALA_ID_KEY = "gaushalaId";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +78,23 @@ public class gaushalaLogin extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Gaushala> call, Response<Gaushala> response) {
                     if (response.isSuccessful()) {
-                        // Successful login
+//                         Successful login
+                        Log.d("gaushalaLogin", "Attempting to retrieve Gaushala ID from response body...");
+                        if (response.body() != null) {
+                            gaushalaId = response.body().getId();
+                            Log.d("gaushalaLogin", "Retrieved Gaushala ID: " + gaushalaId);
+
+                            SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putLong(GAUSHALA_ID_KEY, gaushalaId);
+                            editor.apply();
+
+                            Log.d("gaushalaLogin", "Gaushala ID saved to SharedPreferences.");
+                        } else {
+                            Log.d("gaushalaLogin", "Response body is null.");
+                            Toast.makeText(gaushalaLogin.this, "Failed to retrieve Gaushala ID. Please try again.", Toast.LENGTH_SHORT).show();
+                        }
+
                         Intent intent = new Intent(gaushalaLogin.this, gaushalaNav.class);
                         startActivity(intent);
                         Toast.makeText(gaushalaLogin.this, "Login successful", Toast.LENGTH_SHORT).show();

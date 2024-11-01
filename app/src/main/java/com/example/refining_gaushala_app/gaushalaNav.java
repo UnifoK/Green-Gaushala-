@@ -1,5 +1,6 @@
 package com.example.refining_gaushala_app;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class gaushalaNav extends AppCompatActivity {
 
+    private Long CgaushalaId; // Assuming you have retrieved this from login response
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityGaushalaNavBinding binding;
 
@@ -26,6 +28,13 @@ public class gaushalaNav extends AppCompatActivity {
 
         binding = ActivityGaushalaNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Example: Save gaushalaId in SharedPreferences here
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putLong("gaushalaId", CgaushalaId);
+//        editor.apply();
+
 
         setSupportActionBar(binding.appBarGaushalaNav.toolbar);
         binding.appBarGaushalaNav.fab.setOnClickListener(new View.OnClickListener() {

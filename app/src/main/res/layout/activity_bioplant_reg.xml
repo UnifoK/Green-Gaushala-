@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    android:background="@drawable/pagebkg"
+    android:background="@drawable/factorybg"
     tools:context=".bioplantReg">
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amarante"
             android:text="New Manufacturer Registration"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -56,7 +56,7 @@
                 android:hint="Manufacturer Name"
                 android:inputType="text"
                 android:textColor="@color/blue"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -66,7 +66,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Manufacturer Licence No"
                 android:inputType="text"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -76,7 +76,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Address"
                 android:inputType="text"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -86,7 +86,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -96,7 +96,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="Phone No."
                 android:inputType="phone"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -106,7 +106,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="User Id"
                 android:inputType="text"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -116,7 +116,7 @@
                 android:layout_marginBottom="20dp"
                 android:hint="New Password"
                 android:inputType="textPassword"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="15sp" />
 
             <Button

@@ -4,16 +4,36 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.refining_gaushala_app.models.Request;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class OrderViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final MutableLiveData<List<Request>> acceptedRequests;
 
     public OrderViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        acceptedRequests = new MutableLiveData<>(new ArrayList<>()); // Initialize with an empty list
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Request>> getAcceptedRequests() {
+        return acceptedRequests;
+    }
+
+    public void addRequest(Request request) {
+        List<Request> currentRequests = acceptedRequests.getValue();
+        if (currentRequests != null) {
+            currentRequests.add(request);
+            acceptedRequests.setValue(currentRequests);
+        }
+    }
+
+    public void removeRequest(Request request) {
+        List<Request> currentRequests = acceptedRequests.getValue();
+        if (currentRequests != null) {
+            currentRequests.remove(request);
+            acceptedRequests.setValue(currentRequests);
+        }
     }
 }

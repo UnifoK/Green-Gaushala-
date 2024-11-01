@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
     private ReportAdapter reportAdapter;
     private List<Report> reportList;
     private ProgressBar progressBar;
-    private Map<Long, String> gaushalaMap; // Declare the gaushalaMap
+    private Map<Long, String> gaushalaMap;
 
     @Nullable
     @Override
@@ -45,16 +45,11 @@ public class HomeFragment extends Fragment {
         recyclerView = root.findViewById(R.id.reports_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        progressBar = root.findViewById(R.id.progress_bar); // Initialize progress bar
-
+        progressBar = root.findViewById(R.id.progress_bar);
         reportList = new ArrayList<>();
-        gaushalaMap = new HashMap<>(); // Initialize the gaushala map
-        reportAdapter = new ReportAdapter(reportList, gaushalaMap, new ReportAdapter.OnReportActionListener() {
-            @Override
-            public void onAcceptClick(Report report) {
-                acceptReport(report);
-            }
-        });
+        gaushalaMap = new HashMap<>();
+
+        reportAdapter = new ReportAdapter(reportList, gaushalaMap, this::acceptReport);
         recyclerView.setAdapter(reportAdapter);
 
         fetchGaushalas(); // Fetch gaushala names first
@@ -64,95 +59,79 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchGaushalas() {
-        // Make an API call to fetch gaushalas (assuming you have this API set up)
-        // This is a placeholder; replace it with your actual API call
-        RetrofitClient.getRetrofitInstance().create(ReportApi.class).getAllGaushalas().enqueue(new Callback<List<Gaushala>>() {
+        progressBar.setVisibility(View.VISIBLE); // Show progress bar
+        ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
+        reportApi.getAllGaushalas().enqueue(new Callback<List<Gaushala>>() {
             @Override
             public void onResponse(Call<List<Gaushala>> call, Response<List<Gaushala>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Populate the gaushalaMap with gaushalaId and gaushalaName
                     for (Gaushala gaushala : response.body()) {
                         gaushalaMap.put(gaushala.getId(), gaushala.getName());
                     }
                 } else {
-                    Toast.makeText(getContext(), "No gaushalas found", Toast.LENGTH_SHORT).show();
+                    showToast("No gaushalas found");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Gaushala>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed to load gaushalas", Toast.LENGTH_SHORT).show();
+                showToast("Failed to load gaushalas");
+                Log.e("HomeFragment", "Gaushala Fetch Error: ", t);
             }
         });
     }
 
     private void fetchReports() {
-        progressBar.setVisibility(View.VISIBLE); // Show loading indicator
-        RetrofitClient.getRetrofitInstance().create(ReportApi.class).getAllReports().enqueue(new Callback<List<Report>>() {
+        progressBar.setVisibility(View.VISIBLE);
+        ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
+        reportApi.getAllReports().enqueue(new Callback<List<Report>>() {
             @Override
             public void onResponse(Call<List<Report>> call, Response<List<Report>> response) {
-                progressBar.setVisibility(View.GONE); // Hide loading indicator
+                progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
                     reportList.clear();
                     reportList.addAll(response.body());
-                    reportAdapter.notifyDataSetChanged(); // Refresh the RecyclerView
+                    reportAdapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(getContext(), "No reports found", Toast.LENGTH_SHORT).show();
+                    showToast("No reports found");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Report>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE); // Hide loading indicator
-                Toast.makeText(getContext(), "Failed to load reports", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                showToast("Failed to load reports");
+                Log.e("HomeFragment", "Report Fetch Error: ", t);
             }
         });
     }
 
     private void acceptReport(Report report) {
-        // Create a new Report object with the updated status
-        Report updatedReport = new Report();
-        updatedReport.setId(report.getId());
-        updatedReport.setArea(report.getArea());
-        updatedReport.setTimeSlot(report.getTimeSlot());
-        updatedReport.setLocation(report.getLocation());
-        updatedReport.setReportedBy(report.getReportedBy());
-        updatedReport.setImage(report.getImage());
-        updatedReport.setStatus("accepted"); // Set the status to "accepted"
+        report.setStatus("accepted"); // Update status directly
 
-        // Call API to update report status
         ReportApi reportApi = RetrofitClient.getRetrofitInstance().create(ReportApi.class);
-        reportApi.updateReportStatus(report.getId(), updatedReport).enqueue(new Callback<Report>() {
+        reportApi.updateReportStatus(report.getId(), report).enqueue(new Callback<Report>() {
             @Override
             public void onResponse(Call<Report> call, Response<Report> response) {
                 if (response.isSuccessful()) {
-                    // Log the successful response for debugging
                     Log.d("ReportUpdate", "Response: " + response.body());
-
-                    // Get the updated report object from the response
-                    Report updatedReport = response.body();
-
-                    // Check if the updated report is not null
-                    if (updatedReport != null) {
-                        // Show a toast message
-                        Toast.makeText(getContext(), "Report accepted: " + updatedReport.getLocation(), Toast.LENGTH_SHORT).show();
-
-                        // Optionally refresh the report list or update the UI with the new report data
-                        fetchReports(); // Ensure this method correctly updates the UI
-                    } else {
-                        Toast.makeText(getContext(), "Report update response is empty", Toast.LENGTH_SHORT).show();
-                    }
+                    showToast("Report accepted: " + report.getLocation());
+                    fetchReports(); // Refresh the UI
                 } else {
-                    // Log the error response code
                     Log.e("ReportUpdate", "Error code: " + response.code() + " Message: " + response.message());
-                    Toast.makeText(getContext(), "Failed to accept report: " + response.message(), Toast.LENGTH_SHORT).show();
+                    showToast("Failed to accept report: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Report> call, Throwable t) {
-                Toast.makeText(getContext(), "API call failed", Toast.LENGTH_SHORT).show();
+                showToast("API call failed to accept report");
+                Log.e("HomeFragment", "Report Accept Error: ", t);
             }
         });
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

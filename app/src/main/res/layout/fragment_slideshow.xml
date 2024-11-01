@@ -1,78 +1,142 @@
 <!-- activity_update_resources.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="16dp"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:background="@drawable/bgc"
     tools:context=".ui.slideshow.SlideshowFragment">
 
-    <!-- Daily Production Section -->
+    <!-- Header Section -->
     <TextView
-        android:id="@+id/text_daily_production"
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/amarante"
+        android:text="Update Gaushala Inventory"
+        android:textColor="@color/blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Resource Type Dropdown (Dung, Manure, etc.) -->
+    <TextView
+        android:id="@+id/text_resource_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/amarante"
-        android:text="Daily Production"
+        android:text="Select Resource Type"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
-    <!-- Daily Production Input -->
-    <EditText
-        android:id="@+id/edit_daily_production"
+    <Spinner
+        android:id="@+id/spinner_resource_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_daily_production"
+        android:background="@drawable/spinner_background"
+        android:padding="12dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/blue"
-        android:fontFamily="@font/amarante"
-        android:hint="Enter Daily Production"
-        android:inputType="number"
-        android:textColor="@android:color/black" />
+        android:entries="@array/resource_types"/>
 
-    <!-- Total Production Section -->
+    <!-- Stock Quantity Input -->
     <TextView
-        android:id="@+id/text_total_production"
+        android:id="@+id/text_stock_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_daily_production"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/amarante"
-        android:text="Total Production"
+        android:text="Stock Quantity (in kg)"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
-    <!-- Total Production Input -->
-    <EditText
-        android:id="@+id/edit_total_production"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_total_production"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/blue"
-        android:fontFamily="@font/amarante"
-        android:hint="Enter Total Production"
-        android:inputType="number"
-        android:textColor="@android:color/black" />
+        android:hint="Enter Stock Quantity">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_stock_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@color/white"
+            android:textColor="@android:color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Price per Unit Input -->
+    <TextView
+        android:id="@+id/text_price_per_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Price per Unit (₹)"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Price per Unit">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_price_per_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:background="@color/white"
+            android:textColor="@android:color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Save Button -->
     <Button
         android:id="@+id/btn_save"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="54dp"
+        android:backgroundTint="@color/blue"
+        android:padding="12dp"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+
+    <!-- Current Stocks Display -->
+    <RelativeLayout
+        android:id="@+id/current_stock_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_total_production"
         android:layout_alignParentEnd="true"
-        android:background="@color/grey"
-        android:fontFamily="@font/amarante"
-        android:paddingStart="24dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="12dp"
-        android:text="Save"
-        android:textColor="@android:color/white" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        android:padding="12dp"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:elevation="4dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/text_current_stock_dry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dry Stock: 50 kg"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/amarante"/>
+
+        <TextView
+            android:id="@+id/text_current_stock_fresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fresh Stock: 30 kg"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/amarante"
+        android:layout_below="@id/text_current_stock_dry"
+        android:layout_marginTop="8dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

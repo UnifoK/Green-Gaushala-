@@ -4,7 +4,92 @@ public class Gaushala {
     private Long id;
     private String name;
     private String registrationNumber;
+    private String location;
+    private String email;
+    private String phone;
+    private String userId;
+    private String password;
+    private double dungAmount;
 
+    // Added fields for dung details
+    private double freshDungAmount; // Amount of fresh dung
+    private double dryDungAmount;   // Amount of dry dung
+    private double freshDungPrice;  // Price per unit of fresh dung
+    private double dryDungPrice;    // Price per unit of dry dung
+
+    // Default constructor
+    public Gaushala() {}
+
+    public Gaushala(String name, String registrationNumber, String location,
+                    String dungAmount,String email, String phone, String userId, String password) {
+        this.name = name;
+        this.registrationNumber = registrationNumber;
+        this.location = location;
+        this.dungAmount = Double.parseDouble(dungAmount);
+        this.email = email;
+        this.phone = phone;
+        this.userId = userId;
+        this.password = password;
+    }
+
+    // Parameterized constructor for all fields
+    public Gaushala(String name, String registrationNumber, String location,
+                    double freshDungAmount, double dryDungAmount,
+                    double freshDungPrice, double dryDungPrice,
+                    String email, String phone, String userId, String password) {
+        this.name = name;
+        this.registrationNumber = registrationNumber;
+        this.location = location;
+        this.freshDungAmount = freshDungAmount;
+        this.dryDungAmount = dryDungAmount;
+        this.freshDungPrice = freshDungPrice;
+        this.dryDungPrice = dryDungPrice;
+        this.email = email;
+        this.phone = phone;
+        this.userId = userId;
+        this.password = password;
+    }
+
+    // Constructor for userId and password
+    public Gaushala(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+    }
+
+    // Getters and setters for the new fields
+    public double getFreshDungAmount() {
+        return freshDungAmount;
+    }
+
+    public void setFreshDungAmount(double freshDungAmount) {
+        this.freshDungAmount = freshDungAmount;
+    }
+
+    public double getDryDungAmount() {
+        return dryDungAmount;
+    }
+
+    public void setDryDungAmount(double dryDungAmount) {
+        this.dryDungAmount = dryDungAmount;
+    }
+
+    public double getFreshDungPrice() {
+        return freshDungPrice;
+    }
+
+    public void setFreshDungPrice(double freshDungPrice) {
+        this.freshDungPrice = freshDungPrice;
+    }
+
+    public double getDryDungPrice() {
+        return dryDungPrice;
+    }
+
+    public void setDryDungPrice(double dryDungPrice) {
+        this.dryDungPrice = dryDungPrice;
+    }
+
+    // Existing getters and setters
     public Long getId() {
         return id;
     }
@@ -13,33 +98,6 @@ public class Gaushala {
         this.id = id;
     }
 
-    private String location;
-    private String dungAmount;
-    private String email;
-    private String phone;
-    private String userId;
-    private String password;
-
-    // Default constructor
-    public Gaushala() {}
-
-    // Parameterized constructor
-    public Gaushala(String name, String registrationNumber, String location, String dungAmount, String email, String phone, String userId, String password) {
-        this.name = name;
-        this.registrationNumber = registrationNumber;
-        this.location = location;
-        this.dungAmount = dungAmount;
-        this.email = email;
-        this.phone = phone;
-        this.userId = userId;
-        this.password = password;
-    }
-
-    public Gaushala(String userId, String password) {
-        this.userId = userId;
-        this.password = password;
-    }
-    // Getters and setters
     public String getName() {
         return name;
     }
@@ -62,14 +120,6 @@ public class Gaushala {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getDungAmount() {
-        return dungAmount;
-    }
-
-    public void setDungAmount(String dungAmount) {
-        this.dungAmount = dungAmount;
     }
 
     public String getEmail() {

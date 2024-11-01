@@ -53,37 +53,35 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
         holder.textName.setText("Reported By: " + report.getReportedBy());
 
         // Set acceptedBy field if the report is accepted
-        if (report.getStatus().equals("accepted")) {
-            String gaushalaName = gaushalaMap.get(report.getGaushalaId()); // Get gaushala name
+        if ("accepted".equals(report.getStatus())) {
+            Report.AcceptedBy acceptedBy = report.getAcceptedBy(); // Get the AcceptedBy object
+            Long acceptedById = acceptedBy != null ? acceptedBy.getUserId() : null; // Retrieve userId safely
+            String gaushalaName = acceptedById != null ? gaushalaMap.get(acceptedById) : null; // Retrieve name from map
+
             holder.textName.append("\nAccepted By: " + (gaushalaName != null ? gaushalaName : "Unknown Gaushala"));
         }
 
         // Convert the byte[] image from the report into a Bitmap and display it
-        byte[] imageBytes = Base64.decode(report.getImage(), Base64.DEFAULT);
-        if (imageBytes != null && imageBytes.length > 0) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-            holder.imagePhoto.setImageBitmap(bitmap);
+        if (report.getImage() != null) {
+            byte[] imageBytes = Base64.decode(report.getImage(), Base64.DEFAULT);
+            if (imageBytes.length > 0) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                holder.imagePhoto.setImageBitmap(bitmap);
+            } else {
+                holder.imagePhoto.setImageResource(R.drawable.samplecow);
+            }
         } else {
-            // Fallback to default image if no image data is found
             holder.imagePhoto.setImageResource(R.drawable.samplecow);
         }
 
-        // Set the initial status indicator color
-        if (report.getStatus().equals("pending")) {
-            holder.statusIndicator.setBackgroundResource(R.drawable.circle_red);
-            holder.acceptButton.setVisibility(View.VISIBLE);
-        } else if (report.getStatus().equals("accepted")) {
-            holder.statusIndicator.setBackgroundResource(R.drawable.circle_green);
-            holder.acceptButton.setVisibility(View.GONE);
-        }
+        // Set the status indicator color and visibility of the accept button
+        holder.acceptButton.setVisibility("pending".equals(report.getStatus()) ? View.VISIBLE : View.GONE);
+        holder.statusIndicator.setBackgroundResource("pending".equals(report.getStatus()) ? R.drawable.circle_red : R.drawable.circle_green);
 
         // Set up button click listener
-        holder.acceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onAcceptClick(report); // Notify the listener
-                }
+        holder.acceptButton.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onAcceptClick(report); // Notify the listener
             }
         });
     }
