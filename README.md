@@ -1,3 +1,4 @@
+Sazid 📧 Sazid413saifi@gmail.com 🔗https://www.linkedin.com/in/sazid-a30601149/
 # 🐄 Green Gaushala – Android App for Cow Rescue and Sustainability
 
 Green Gaushala is a socially driven Android application designed to report, rescue, and rehabilitate stray cows through a collaborative platform involving three types of users: public reporters, gaushala caretakers, and small-scale biogas plant owners.
