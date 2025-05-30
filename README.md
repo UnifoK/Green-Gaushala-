@@ -55,17 +55,17 @@ graph TD
 ## 📸 Screenshots
 
 > Add app screenshots here (login, report cow, dashboard, stock page, etc.)
-> login 
+login 
 ![gaushala Login](https://github.com/user-attachments/assets/102de62d-8d3b-4571-a425-d861ee9ba190)
 
-> Bioplant Interfaces
-> Registration
+## Bioplant Interfaces
+Registration
 ![bioplant reg](https://github.com/user-attachments/assets/89d8f891-985f-4e9e-aa6e-525851a8a42c)
 Homepage
-> ![bioplant homepage](https://github.com/user-attachments/assets/84bfd311-2675-42aa-bce4-c21fc2824ae0)
+![bioplant homepage](https://github.com/user-attachments/assets/84bfd311-2675-42aa-bce4-c21fc2824ae0)
 Profile
-> ![bioplant profile](https://github.com/user-attachments/assets/ace2dc7d-21b0-48a8-a5cd-bea6d4ad40cc)
-> Available gaushalas
+![bioplant profile](https://github.com/user-attachments/assets/ace2dc7d-21b0-48a8-a5cd-bea6d4ad40cc)
+## Available gaushalas
 ![avaialable gaushala through bioplant POV](https://github.com/user-attachments/assets/747b8bb2-4c5e-497c-8a0d-b7aa794e42d7)
 
 Gaushala Reports:
